@@ -15,7 +15,7 @@ const Header = () => {
                                 <Link className='font-bold' to='/home'>Home</Link>
                             </li>
                             <li>
-                                <Link className='font-bold' to='/courses'>Courses</Link>
+                                <Link className='font-bold' to='/stories'>Stories</Link>
                             </li>
                             <li>
                                 <Link className='font-bold' to='/faq'>Faq</Link>
@@ -25,12 +25,12 @@ const Header = () => {
                             </li>
                         </ul>
                     </div>
-                    <label tabIndex={0} className="btn btn-ghost avatar">
+                    <Link to='/home'><label tabIndex={0} className="btn btn-ghost avatar">
                         <div className="h-12">
                             <img src="https://i.ibb.co/wKKqswP/dribbble-portfolio-removebg-preview.png" alt='' />
                         </div>
                         <p>Story Book</p>
-                    </label>
+                    </label></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -38,7 +38,7 @@ const Header = () => {
                             <Link className='font-bold' to='/home'>Home</Link>
                         </li>
                         <li>
-                            <Link className='font-bold' to='/courses'>Courses</Link>
+                            <Link className='font-bold' to='/stories'>Stories</Link>
                         </li>
                         <li>
                             <Link className='font-bold' to='/faq'>Faq</Link>
