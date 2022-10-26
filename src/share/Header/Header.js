@@ -29,7 +29,7 @@ const Header = () => {
                         <div className="h-12">
                             <img src="https://i.ibb.co/wKKqswP/dribbble-portfolio-removebg-preview.png" alt='' />
                         </div>
-                        <p>Story Book</p>
+                        <p className='font-bold'>Story Book</p>
                     </label></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -48,7 +48,17 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                {/* <div className="navbar-end">
+                <div className="navbar-end lg:flex">
+                    <div className="navbar-center lg:flex">
+                        <ul className="menu menu-horizontal p-0">
+                            <li>
+                                <Link className='font-bold' to='/login'>Login</Link>
+                            </li>
+                            <li>
+                                <Link className='font-bold' to='/registar'>Registar</Link>
+                            </li>
+                        </ul>
+                    </div>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
@@ -63,7 +73,7 @@ const Header = () => {
                             <li><p>profile</p></li>
                         </ul>
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );
