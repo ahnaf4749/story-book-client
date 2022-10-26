@@ -4,7 +4,7 @@ import Storie from '../Storie/Storie';
 
 const Stories = () => {
     const stories = useLoaderData();
-    console.log(stories);
+    // console.log(stories);
     return (
         <div className='grid lg:grid-cols-4 sm:grid-cols-1 lg:gap-4 sm:gap-1'>
             <div>
