@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
+
+    const { user } = useContext(AuthContext)
+
     return (
         <div>
             <div className="navbar bg-slate-400">
@@ -67,7 +71,7 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <p>profile</p>
+                                <p>{user?.name}</p>
                             </li>
                             <li><p>profile</p></li>
                             <li><p>profile</p></li>
