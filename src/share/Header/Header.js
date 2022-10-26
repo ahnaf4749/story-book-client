@@ -1,10 +1,17 @@
 import React, { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
 
     return (
         <div>
@@ -55,23 +62,35 @@ const Header = () => {
                 <div className="navbar-end lg:flex">
                     <div className="navbar-center lg:flex">
                         <ul className="menu menu-horizontal p-0">
-                            <li>
-                                <Link className='font-bold' to='/login'>Login</Link>
-                            </li>
-                            <li>
-                                <Link className='font-bold' to='/registar'>Registar</Link>
-                            </li>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <button onClick={handleLogOut} className="btn btn-ghost font-bold">Log out</button>
+                                    </> :
+                                    <>
+                                        <li>
+                                            <Link className='font-bold' to='/login'>Login</Link>
+                                        </li>
+                                        <li>
+                                            <Link className='font-bold' to='/registar'>Registar</Link>
+                                        </li>
+                                    </>
+                            }
                         </ul>
                     </div>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" alt='' />
+                            <div className=" rounded-full">
+                                {
+                                    user?.photoURL ?
+                                        <img src={user?.photoURL} alt='' /> :
+                                        <FaUser></FaUser>
+                                }
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <p>{user?.name}</p>
+                                <p>{user?.displayName}</p>
                             </li>
                             <li><p>profile</p></li>
                             <li><p>profile</p></li>
