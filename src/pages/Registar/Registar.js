@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Registar = () => {
-
+    const [error, setError] = useState('')
     const { creatUser } = useContext(AuthContext);
 
     const handleAddToRegistar = e => {
@@ -19,10 +19,12 @@ const Registar = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setError('')
                 form.reset();
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message)
             })
     }
 
@@ -72,6 +74,9 @@ const Registar = () => {
                             </div>
                             <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                                 Already have account? <Link to='/login' className="text-blue-700 hover:underline dark:text-blue-500">Please login</Link>
+                            </div>
+                            <div className="text-sm font-medium text-red-500 dark:text-gray-300">
+                                {error}
                             </div>
                         </div>
                     </div>

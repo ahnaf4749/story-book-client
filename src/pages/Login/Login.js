@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import './Login.css'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -7,24 +7,33 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
+    const [error, setError] = useState('')
     const { googleProviderLogin, logIn } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider()
 
     const handleAddToLogin = (e) => {
         e.preventDefault();
-        const from = e.target;
-        const email = from.email.value;
-        const password = from.password.value;
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
         console.log(email, password);
 
         logIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
+                setError('');
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message);
             })
     }
 
@@ -73,6 +82,9 @@ const Login = () => {
                                 </div>
                                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                                     Not registered? <Link to='/registar' className="text-blue-700 hover:underline dark:text-blue-500">Create account</Link>
+                                </div>
+                                <div className="text-sm font-medium text-red-500 dark:text-gray-300">
+                                    {error}
                                 </div>
                             </div>
                         </div>

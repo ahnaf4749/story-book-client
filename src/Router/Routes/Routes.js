@@ -7,12 +7,17 @@ import Login from "../../pages/Login/Login";
 import Registar from "../../pages/Registar/Registar";
 import StorieDetails from "../../pages/Storidetails/StorieDetails";
 import Stories from "../../pages/Stories/Stories";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
         children: [
+            {
+                path: '/',
+                element: <Home></Home>
+            },
             {
                 path: '/home',
                 element: <Home></Home>
@@ -25,7 +30,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/storie/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/storie/${params.id}`),
-                element: <StorieDetails></StorieDetails>
+                element: <PrivateRoute><StorieDetails></StorieDetails></PrivateRoute>
             },
             {
                 path: '/faq',

@@ -92,8 +92,6 @@ const Header = () => {
                             <li>
                                 <p>{user?.displayName}</p>
                             </li>
-                            <li><p>profile</p></li>
-                            <li><p>profile</p></li>
                         </ul>
                     </div>
                 </div>
