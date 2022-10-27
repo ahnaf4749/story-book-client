@@ -27,12 +27,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/stories',
-                loader: () => fetch('http://localhost:5000/stories'),
+                loader: () => fetch('https://assaienment-10-sarver.vercel.app/stories'),
                 element: <Stories></Stories>
             },
             {
                 path: '/storie/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/storie/${params.id}`),
+                loader: ({ params }) => fetch(`https://assaienment-10-sarver.vercel.app/storie/${params.id}`),
                 element: <StorieDetails></StorieDetails>
             },
             {
@@ -53,6 +53,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'terms/:id',
+                loader: ({ params }) => fetch(`https://assaienment-10-sarver.vercel.app/storie/${params.id}`),
                 element: <PrivateRoute><TermsAndCondetion></TermsAndCondetion></PrivateRoute>
             }
         ]
