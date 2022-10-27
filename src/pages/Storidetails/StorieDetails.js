@@ -17,8 +17,15 @@ const StorieDetails = () => {
                     <figure><img className='w-auto' src={storieDetail.image} alt="Album" /></figure>
                     <div className="card-body">
                         <p>{storieDetail.details}</p>
-                        <div className="card-actions justify-center">
-                            <button className="btn btn-outline btn-ghost rounded-1xl"><Link to='/stories'>Back To Stories</Link></button>
+                        <div className='flex justify-between'>
+                            <div className="card-actions">
+                                <button className="btn btn-outline btn-ghost rounded-1xl"><Link to='/stories'>Back To Stories</Link></button>
+                            </div>
+                            {
+                                <div className="card-actions">
+                                    <button className="btn btn-outline btn-ghost rounded-1xl"><Link to={`/terms/${storieDetail.id}`}>Premium acces</Link></button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

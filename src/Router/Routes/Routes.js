@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
+import TermsAndCondetion from "../../Others/TermsAndCondetion/TermsAndCondetion";
 import Blog from "../../pages/Blog/Blog";
 import Faq from "../../pages/Faq/Faq";
 import Home from "../../pages/Home/Home";
@@ -47,6 +48,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/registar',
                 element: <Registar></Registar>
+            },
+            {
+                path: 'terms/:id',
+                element: <TermsAndCondetion></TermsAndCondetion>
             }
         ]
     }
