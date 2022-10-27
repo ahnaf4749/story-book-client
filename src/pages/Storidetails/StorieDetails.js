@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdf from "react-to-pdf";
 
 const StorieDetails = () => {
     const storieDetail = useLoaderData()
-    console.log(storieDetail);
+    const ref = useRef();
+    // console.log(storieDetail);
     return (
-        <div className='mx-auto w-3/4 mt-16 shadow-2xl'>
+        <div ref={ref} className='mx-auto w-3/4 mt-16 shadow-2xl'>
             <div className='mt-10'>
                 <h1 className='text-4xl font-bold text-center'>{storieDetail.name}</h1>
             </div>
@@ -25,6 +27,11 @@ const StorieDetails = () => {
                                 <div className="card-actions">
                                     <button className="btn btn-outline btn-ghost rounded-1xl"><Link to={`/terms/${storieDetail.id}`}>Premium acces</Link></button>
                                 </div>
+                            }
+                            {
+                                <Link className="btn btn-primary"><Pdf targetRef={ref} filename="code-example.pdf">
+                                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                                </Pdf></Link>
                             }
                         </div>
                     </div>
