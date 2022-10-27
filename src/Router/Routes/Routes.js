@@ -11,6 +11,7 @@ import Stories from "../../pages/Stories/Stories";
 import ErrorePage from "../../share/ErrorPage/ErrorePage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
+
 export const routes = createBrowserRouter([
     {
         path: '/',
@@ -32,7 +33,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/storie/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/storie/${params.id}`),
-                element: <PrivateRoute><StorieDetails></StorieDetails></PrivateRoute>
+                element: <StorieDetails></StorieDetails>
             },
             {
                 path: '/faq',
@@ -52,7 +53,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'terms/:id',
-                element: <TermsAndCondetion></TermsAndCondetion>
+                element: <PrivateRoute><TermsAndCondetion></TermsAndCondetion></PrivateRoute>
             }
         ]
     },
