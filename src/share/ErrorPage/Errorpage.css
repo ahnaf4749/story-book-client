@@ -1,0 +1,10 @@
+.error a {
+    text-decoration: none;
+    color: black;
+}
+
+.error-btn {
+    text-align: center;
+    justify-content: center;
+    margin-top: 300px;
+}

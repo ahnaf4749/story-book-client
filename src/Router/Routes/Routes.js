@@ -8,6 +8,7 @@ import Login from "../../pages/Login/Login";
 import Registar from "../../pages/Registar/Registar";
 import StorieDetails from "../../pages/Storidetails/StorieDetails";
 import Stories from "../../pages/Stories/Stories";
+import ErrorePage from "../../share/ErrorPage/ErrorePage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
@@ -54,5 +55,8 @@ export const routes = createBrowserRouter([
                 element: <TermsAndCondetion></TermsAndCondetion>
             }
         ]
+    },
+    {
+        path: '*', element: <ErrorePage></ErrorePage>
     }
 ])
