@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 const Registar = () => {
     const [error, setError] = useState('')
     const [accpted, setAccpted] = useState(false);
-    const { creatUser } = useContext(AuthContext);
+    const { creatUser, userProfile } = useContext(AuthContext);
 
     const handleAddToRegistar = e => {
         e.preventDefault();
@@ -14,7 +14,7 @@ const Registar = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, photoURL, password);
+        // console.log(name, email, photoURL, password);
 
         creatUser(email, password)
             .then(result => {
@@ -22,10 +22,23 @@ const Registar = () => {
                 console.log(user);
                 setError('')
                 form.reset();
+                handleProfile(name, photoURL)
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message)
+            })
+    }
+
+    const handleProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        userProfile(profile)
+            .then(() => { })
+            .catch(error => {
+                console.error(error);
             })
     }
 
